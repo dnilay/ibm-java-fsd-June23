@@ -17,6 +17,7 @@ public class App {
 		do {
 			System.out.println("1. Create Employee...");
 			System.out.println("2. Display Employee Details...");
+			System.out.println("3. Find Employee By Id.");
 			System.out.println("0. Exit");
 			System.out.print("Enter Your Choice: ");
 			choice = scanner.nextInt();
@@ -31,6 +32,28 @@ public class App {
 					System.out.println(e1.nextElement());
 				}
 
+				break;
+			case 3:
+				System.out.print("Enter Employee ID: ");
+				String id=scanner.next();
+				Employee employee = null;
+				int count=-1;
+				Enumeration<Employee> e2 = v.elements();
+				while (e2.hasMoreElements()) {
+					employee=e2.nextElement();
+					if(employee.getEmployeeId().equals(id))
+					{
+						System.out.println("found "+employee);
+						count++;
+						break;
+					}
+				}
+				if(count<0)
+				{
+					System.out.println("not found");
+				}
+			
+				
 				break;
 			case 0:
 				System.out.println("Bye...!");

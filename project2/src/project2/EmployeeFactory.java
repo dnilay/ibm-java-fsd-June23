@@ -7,6 +7,8 @@ public class EmployeeFactory {
 	
 	private Scanner scanner=new Scanner(System.in);
 	
+	
+	
 	public Employee createEmployee()
 	{
 		Employee emp=new Employee();
