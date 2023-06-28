@@ -29,11 +29,13 @@ public class Counter {
 	
 	public static void main(String args[])
 	{
-		Counter counter=new Counter();
-		Counter counte1r=new Counter();
-		Counter counter2=new Counter();
-		System.out.println(counter.a);
-		System.out.println(counter.b);
+		/*
+		 * Counter counter=new Counter(); Counter counte1r=new Counter(); Counter
+		 * counter2=new Counter(); System.out.println(counter.a);
+		 * System.out.println(counter.b);
+		 */
+		
+		Employee e=new Employee("AA", 10, DEPT.IT);
 	}
 
 }

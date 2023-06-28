@@ -4,6 +4,7 @@ public class Employee {
 	
 	private String name;
 	private double salary;
+	private DEPT dept;
 	
 	
 	public Employee() {
@@ -11,10 +12,11 @@ public class Employee {
 	}
 
 
-	public Employee(String name, double salary) {
+	public Employee(String name, double salary,DEPT dept) {
 		super();
 		this.name = name;
 		this.salary = salary;
+		this.dept=dept;
 	}
 
 
