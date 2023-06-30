@@ -3,6 +3,8 @@ package com.example;
 import java.util.List;
 import java.util.Set;
 
+import com.example.model.Employee;
+
 public interface EmployeeService {
 	
 	public void createEmployee(Employee employee);

@@ -3,6 +3,8 @@ package com.example;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.example.model.Employee;
+
 public class EmployeeServiceImpl implements EmployeeService {
 
 	private Set<Employee> employees;
