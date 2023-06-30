@@ -1,8 +1,11 @@
 package com.example.service;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Properties;
+import java.util.TreeMap;
 import java.util.UUID;
 
 import com.example.model.Employee;
@@ -12,7 +15,7 @@ public class EmployeeServiceMapImpl implements EmployeeServiceMap {
 	private Map<String, Employee> emplMap;
 	
 	{
-		emplMap=new LinkedHashMap<String,Employee>();
+		emplMap=new TreeMap<String,Employee>();
 	}
 
 	@Override

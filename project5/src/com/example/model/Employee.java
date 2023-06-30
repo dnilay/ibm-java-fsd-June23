@@ -1,22 +1,35 @@
 package com.example.model;
 
-public class Employee {
+public class Employee implements Comparable<Employee> {
 	
 	private int employeeId;
 	private String firstName;
 	private String lastName;
 	private String email;
+	private double salary;
+	
 	public Employee() {
 		super();
 	}
 	
 	
-	public Employee(int employeeId, String firstName, String lastName, String email) {
+	public Employee(int employeeId, String firstName, String lastName, String email,double salary) {
 		super();
 		this.employeeId = employeeId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.salary=salary;
+	}
+
+
+	public double getSalary() {
+		return salary;
+	}
+
+
+	public void setSalary(double salary) {
+		this.salary = salary;
 	}
 
 
@@ -46,7 +59,7 @@ public class Employee {
 	}
 	@Override
 	public String toString() {
-		return "Employee ID: "+getEmployeeId()+" First Name: "+getFirstName()+" Last Name: "+getLastName()+" Email: "+getEmail();
+		return "Employee ID: "+getEmployeeId()+" First Name: "+getFirstName()+" Last Name: "+getLastName()+" Email: "+getEmail()+" Salary: "+getSalary();
 	}
 	
 	@Override
@@ -57,7 +70,8 @@ public class Employee {
 			employee=(Employee)obj;
 		}
 		
-		if((this.getEmployeeId()==employee.getEmployeeId())&&(this.getFirstName().equals(employee.getFirstName()))&&(this.getLastName().equals(employee.getLastName()))&&(this.email.equals(employee.getEmail())))
+		if((this.getEmployeeId()==employee.getEmployeeId())&&(this.getFirstName().equals(employee.getFirstName()))
+				&&(this.getLastName().equals(employee.getLastName()))&&(this.email.equals(employee.getEmail())&&(this.getSalary()==employee.getSalary())))
 		{
 			return true;
 		}
@@ -71,5 +85,24 @@ public class Employee {
 	public int hashCode() {
 		// TODO Auto-generated method stub
 		return super.hashCode();
+	}
+
+
+	@Override
+	public int compareTo(Employee o) {
+		// TODO Auto-generated method stub
+		double f=getSalary()-o.getSalary();
+		if(f==0.0)
+			return 0;
+		else if(f<0.0)
+		{
+			return 1;
+		}
+		else 
+		{
+			return -1;
+		}
+		
+		
 	}
 }
