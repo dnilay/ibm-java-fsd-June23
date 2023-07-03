@@ -1,14 +1,11 @@
 package org.example;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class App {
 
-	public static void main(String args[])
-	{	
-	/*
+	public static void main(String args[]) {
+		/*
 		 * BufferedReader bufferedReader = null;
 		 * 
 		 * bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -21,14 +18,20 @@ public class App {
 		 * 
 		 * System.out.println("out side try/catch...");
 		 */
-	
-	EmployeeFactory factory=new EmployeeFactory();
-	try {
-		factory.createEmployee();
-	} catch (NumberFormatException | IOException e) {
-		// TODO Auto-generated catch block
-		System.err.println("error occured...!");
-	}
+
+		EmployeeFactory factory = new EmployeeFactory();
+		try {
+			factory.createEmployee();
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			System.err.println("error occured...!"+e.getMessage());
+		} catch (SalaryCheckException e) {
+			// TODO Auto-generated catch block
+			System.err.println(e.getErrorMessage());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.err.println(e.getMessage());
+		}
 
 	}
 

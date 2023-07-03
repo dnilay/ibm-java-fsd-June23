@@ -12,20 +12,24 @@ public class EmployeeFactory {
 	{
 		bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 		employeeService = new EmployeeServiceImpl();
-		employee=new Employee();
+		employee = new Employee();
 	}
 
-	public void createEmployee() throws IOException, NumberFormatException {
+	public void createEmployee() throws IOException, NumberFormatException, SalaryCheckException {
 
 		System.out.print("Enter Employee Name: ");
-		String eName=bufferedReader.readLine();
+		String eName = bufferedReader.readLine();
 		System.out.print("Enter Employee Salary: ");
-		double eSalary=Double.parseDouble( bufferedReader.readLine());
+		double eSalary = Double.parseDouble(bufferedReader.readLine());
+
+		if (eSalary < 1000) {
+			throw new SalaryCheckException("invalid salary...");
+		}
+
 		employee.setName(eName);
 		employee.setSalary(eSalary);
-		Employee e=employeeService.createEmployee(employee);
-		System.out.println("Employee Created: "+e);
-		
+		Employee e = employeeService.createEmployee(employee);
+		System.out.println("Employee Created: " + e);
 
 	}
 
