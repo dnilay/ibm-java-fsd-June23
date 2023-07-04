@@ -1,21 +1,16 @@
 package com.ibm.customer_project;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.List;
 
 import com.ibm.customer_project.model.Customer;
 import com.ibm.customer_project.service.CustomerService;
 import com.ibm.customer_project.service.CustomerServiceImpl;
-import com.mysql.cj.jdbc.Driver;
 
 public class Tester {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		try {
 			/*
 			 * //registering driver DriverManager.registerDriver(new Driver());
@@ -28,20 +23,15 @@ public class Tester {
 			 * System.out.println(rs.getInt("customer_id")+","+rs.getString("first_name")+
 			 * ","+rs.getString("last_lase")+","+rs.getString("email")); }
 			 */
-			
-			
-			CustomerService service=new CustomerServiceImpl();
-			List<Customer> l=service.getAllCustomers();
-			for(Customer c:l)
-			{
+
+			CustomerService service = new CustomerServiceImpl();
+			Customer c1=service.createCustomer(new Customer(3, "Sachin", "Tendulkar", "sachin@email.com"));
+			System.out.println(c1);
+			List<Customer> l = service.getAllCustomers();
+			for (Customer c : l) {
 				System.out.println(c);
 			}
-			
-			
-			
-			
-			
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

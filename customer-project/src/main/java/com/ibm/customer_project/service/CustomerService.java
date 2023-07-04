@@ -8,5 +8,7 @@ import com.ibm.customer_project.model.Customer;
 public interface CustomerService {
 	
 	public List<Customer> getAllCustomers() throws SQLException;
+	
+	public Customer createCustomer(Customer customer) throws SQLException;
 
 }
