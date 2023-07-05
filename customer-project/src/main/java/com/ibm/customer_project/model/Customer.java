@@ -9,6 +9,16 @@ public class Customer {
 	public Customer() {
 		super();
 	}
+	
+	
+	public Customer(String firstName, String lastName, String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
+
+
 	public Customer(int customerId, String firstName, String lastName, String email) {
 		super();
 		this.customerId = customerId;

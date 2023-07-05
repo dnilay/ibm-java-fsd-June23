@@ -12,34 +12,38 @@ public class Tester {
 		// TODO Auto-generated method stub
 
 		try {
-			/*
-			 * //registering driver DriverManager.registerDriver(new Driver());
-			 * //establishing the connection Connection
-			 * connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/hr",
-			 * "root","root"); //creating statement object Statement
-			 * statement=connection.createStatement(); //storing query data into result set
-			 * ResultSet rs= statement.executeQuery("select * from customers"); //looping
-			 * over resultset and retriving the data while(rs.next()) {
-			 * System.out.println(rs.getInt("customer_id")+","+rs.getString("first_name")+
-			 * ","+rs.getString("last_lase")+","+rs.getString("email")); }
-			 */
+			
 
 			CustomerService service = new CustomerServiceImpl();
+
 			/*
-			 * Customer c1=service.createCustomer(new Customer(3, "Sachin", "Tendulkar",
-			 * "sachin@email.com")); System.out.println(c1); List<Customer> l =
+			 * Customer c1 = service.createCustomer(new Customer(4, "Sachin", "T",
+			 * "sachin1@email.com")); System.out.println(c1); List<Customer> l =
 			 * service.getAllCustomers(); for (Customer c : l) { System.out.println(c); }
+			 * 
+			 * Customer customer = service.findCustomerById(10);
+			 * 
+			 * if (customer == null) { System.out.println("no such customer exists"); } else
+			 * { System.out.println("Customer Found: \n" + customer); }
 			 */
-			Customer customer=service.findCustomerById(10);
+			/*
+			 * List<Customer> list=service.findCustomerByFirstName("Sachin"); if(list==null)
+			 * { System.out.printf("No customer FOund with the given first name"); } else {
+			 * for(Customer c: list) { System.out.println(c); } }
+			 */
+			
+			Customer customer=service.updateCustomer(1, new Customer("John", "doe", "john.doe@gmail.com"));
 			
 			if(customer==null)
 			{
-				System.out.println("no such customer exists");
+				System.out.println("update unsucessfull..");
 			}
 			else
 			{
-				System.out.println("Customer Found: \n"+customer);
+				System.out.println("Customer updated: "+customer);
 			}
+			
+			
 
 		} catch (Exception e) {
 			// TODO: handle exception
