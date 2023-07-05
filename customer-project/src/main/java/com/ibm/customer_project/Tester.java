@@ -12,15 +12,16 @@ public class Tester {
 		// TODO Auto-generated method stub
 
 		try {
-			
 
-			CustomerService service = new CustomerServiceImpl();
+			
+			  CustomerService service = new CustomerServiceImpl();
+			/* 
+			 * Customer c1 = service.createCustomer(new Customer(2, "John", "Doe",
+			 * "john@email.com")); System.out.println(c1); List<Customer> l =
+			 * service.getAllCustomers(); for (Customer c : l) { System.out.println(c); }
+			 */
 
 			/*
-			 * Customer c1 = service.createCustomer(new Customer(4, "Sachin", "T",
-			 * "sachin1@email.com")); System.out.println(c1); List<Customer> l =
-			 * service.getAllCustomers(); for (Customer c : l) { System.out.println(c); }
-			 * 
 			 * Customer customer = service.findCustomerById(10);
 			 * 
 			 * if (customer == null) { System.out.println("no such customer exists"); } else
@@ -31,20 +32,17 @@ public class Tester {
 			 * { System.out.printf("No customer FOund with the given first name"); } else {
 			 * for(Customer c: list) { System.out.println(c); } }
 			 */
-			
-			Customer customer=service.updateCustomer(1, new Customer("John", "doe", "john.doe@gmail.com"));
-			
-			if(customer==null)
-			{
-				System.out.println("update unsucessfull..");
-			}
-			else
-			{
-				System.out.println("Customer updated: "+customer);
-			}
-			
-			
 
+			/*
+			 * Customer customer=service.updateCustomer(1, new Customer("John", "doe",
+			 * "john.doe@gmail.com"));
+			 * 
+			 * if(customer==null) { System.out.println("update unsucessfull.."); } else {
+			 * System.out.println("Customer updated: "+customer); }
+			 */
+			//  service.deleteCustomerById(1);
+
+			  service.deleteAllCustomers();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

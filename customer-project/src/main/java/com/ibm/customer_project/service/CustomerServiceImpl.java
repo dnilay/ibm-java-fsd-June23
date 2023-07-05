@@ -129,4 +129,38 @@ public class CustomerServiceImpl implements CustomerService {
 		
 	}
 
+	@Override
+	public void deleteCustomerById(int customerId) throws SQLException {
+		// TODO Auto-generated method stub
+		PreparedStatement pStatement = null;
+		pStatement = connection.prepareStatement("select * from customers where customer_id=?");
+		pStatement.setInt(1, customerId);
+		ResultSet rs= pStatement.executeQuery();
+		while(rs.next())
+		{
+			customers.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+		}
+		if(customers.isEmpty())
+		{
+			System.out.printf("Customer with customer_id %d not found", customerId);
+		}
+		else
+		{
+			pStatement = connection.prepareStatement("delete from customers where customer_id=?");
+			pStatement.setInt(1, customerId);
+			pStatement.executeUpdate();
+			System.out.printf("customer with customer_id %d id removed", customerId);
+		}
+		
+	}
+
+	@Override
+	public void deleteAllCustomers() throws SQLException {
+		// TODO Auto-generated method stub
+		PreparedStatement pStatement = null;
+		pStatement = connection.prepareStatement("delete from customers");
+		pStatement.executeUpdate();
+		System.out.println("all customer(s) revoved...");
+	}
+
 }
