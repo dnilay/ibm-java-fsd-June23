@@ -25,11 +25,20 @@ public class Tester {
 			 */
 
 			CustomerService service = new CustomerServiceImpl();
-			Customer c1=service.createCustomer(new Customer(3, "Sachin", "Tendulkar", "sachin@email.com"));
-			System.out.println(c1);
-			List<Customer> l = service.getAllCustomers();
-			for (Customer c : l) {
-				System.out.println(c);
+			/*
+			 * Customer c1=service.createCustomer(new Customer(3, "Sachin", "Tendulkar",
+			 * "sachin@email.com")); System.out.println(c1); List<Customer> l =
+			 * service.getAllCustomers(); for (Customer c : l) { System.out.println(c); }
+			 */
+			Customer customer=service.findCustomerById(10);
+			
+			if(customer==null)
+			{
+				System.out.println("no such customer exists");
+			}
+			else
+			{
+				System.out.println("Customer Found: \n"+customer);
 			}
 
 		} catch (Exception e) {

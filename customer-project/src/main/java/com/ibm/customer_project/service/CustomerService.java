@@ -10,5 +10,7 @@ public interface CustomerService {
 	public List<Customer> getAllCustomers() throws SQLException;
 	
 	public Customer createCustomer(Customer customer) throws SQLException;
+	
+	public Customer findCustomerById(int customerId) throws SQLException;
 
 }

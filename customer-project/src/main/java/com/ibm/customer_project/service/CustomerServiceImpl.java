@@ -45,15 +45,38 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Customer createCustomer(Customer customer) throws SQLException {
 
-		PreparedStatement pStatement = connection.prepareStatement("insert into customers(customer_id,first_name,last_name,email) values(?,?,?,?)");
+		PreparedStatement pStatement = connection
+				.prepareStatement("insert into customers(customer_id,first_name,last_name,email) values(?,?,?,?)");
 		pStatement.setInt(1, customer.getCustomerId());
 		pStatement.setString(2, customer.getFirstName());
 		pStatement.setString(3, customer.getLastName());
 		pStatement.setString(4, customer.getEmail());
-		int result=pStatement.executeUpdate();
-		System.out.println(result+" rows inserted/updated");
+		int result = pStatement.executeUpdate();
+		System.out.println(result + " rows inserted/updated");
 
 		return customer;
+	}
+
+	@Override
+	public Customer findCustomerById(int customerId) throws SQLException {
+		// TODO Auto-generated method stub
+		PreparedStatement pStatement = null;
+		pStatement = connection.prepareStatement("select * from customers where customer_id=?");
+		pStatement.setInt(1, customerId);
+		ResultSet rs= pStatement.executeQuery();
+		while(rs.next())
+		{
+			customers.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+		}
+		if(customers.isEmpty())
+		{
+			return null;
+		}
+		else
+		{
+			return customers.get(0);
+		}
+		
 	}
 
 }
