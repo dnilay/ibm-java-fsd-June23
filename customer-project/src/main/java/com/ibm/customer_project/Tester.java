@@ -13,13 +13,16 @@ public class Tester {
 
 		try {
 
-			
-			  CustomerService service = new CustomerServiceImpl();
-			/* 
-			 * Customer c1 = service.createCustomer(new Customer(2, "John", "Doe",
-			 * "john@email.com")); System.out.println(c1); List<Customer> l =
-			 * service.getAllCustomers(); for (Customer c : l) { System.out.println(c); }
-			 */
+			CustomerService service = new CustomerServiceImpl();
+			Customer c = new Customer(5, "Marry", "Public", "marry@email.com");
+
+			Customer c1 = service.createCustomer(new Customer(2, "John", "Doe", "john@email.com"));
+			service.createCustomer(c);
+			System.out.println(c1);
+			List<Customer> l = service.getAllCustomers();
+			for (Customer c2 : l) {
+				System.out.println(c2);
+			}
 
 			/*
 			 * Customer customer = service.findCustomerById(10);
@@ -40,9 +43,9 @@ public class Tester {
 			 * if(customer==null) { System.out.println("update unsucessfull.."); } else {
 			 * System.out.println("Customer updated: "+customer); }
 			 */
-			//  service.deleteCustomerById(1);
+			// service.deleteCustomerById(1);
 
-			  service.deleteAllCustomers();
+			//service.deleteAllCustomers();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
