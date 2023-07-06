@@ -21,11 +21,20 @@ public class App {
 			 * System.out.println(i);
 			 */
     	  
-    	  List<Inventory> i=service.getAllInventory();
-    	  for(Inventory ii:i)
-    	  {
-    		  System.out.println(i);
-    	  }
+/*
+ * List<Inventory> i=service.getAllInventory(); for(Inventory ii:i) {
+ * System.out.println(i); }
+ */
+	
+	Inventory i=service.getInventoryByid(100);
+	if(i==null)
+	{
+		System.out.println("no such id found...");
+	}
+	else
+	{
+		System.out.println(i);
+	}
 
 		
 	} catch (Exception e) {
