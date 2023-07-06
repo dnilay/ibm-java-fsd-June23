@@ -47,4 +47,13 @@ public class InventoryServiceImpl implements InventoryService {
 		return i;
 	}
 
+	@Override
+	public List<Inventory> getInventoryByProductName(String productName) {
+		// TODO Auto-generated method stub
+		session = sessionFactory.openSession();
+		TypedQuery<Inventory> query=session.createQuery("FROM Inventory I where I.productName=:pName",Inventory.class);
+		query.setParameter("pName", productName);
+		return query.getResultList();
+	}
+
 }

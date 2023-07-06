@@ -11,35 +11,33 @@ import org.example.service.InventoryServiceImpl;
  *
  */
 public class App {
-	public static void main( String[] args )
-    {
-      try {
-    	  
-			
-	InventoryService service=new InventoryServiceImpl(); 
-/*	Inventory i=service.createInventory(new Inventory(301, 101, "Laptop", 10));
+	public static void main(String[] args) {
+		try {
+
+			InventoryService service = new InventoryServiceImpl();
+			/*
+			 * Inventory i=service.createInventory(new Inventory(301, 101, "Laptop", 10));
 			 * System.out.println(i);
 			 */
-    	  
-/*
- * List<Inventory> i=service.getAllInventory(); for(Inventory ii:i) {
- * System.out.println(i); }
- */
-	
-	Inventory i=service.getInventoryByid(100);
-	if(i==null)
-	{
-		System.out.println("no such id found...");
-	}
-	else
-	{
-		System.out.println(i);
-	}
 
-		
-	} catch (Exception e) {
-		// TODO: handle exception
-		e.printStackTrace();
+			/*
+			 * List<Inventory> i=service.getAllInventory(); for(Inventory ii:i) {
+			 * System.out.println(i); }
+			 */
+
+			/*
+			 * Inventory i=service.getInventoryByid(100); if(i==null) {
+			 * System.out.println("no such id found..."); } else { System.out.println(i); }
+			 */
+
+			List<Inventory> list = service.getInventoryByProductName("Pen");
+			for(Inventory i:list)
+			{
+				System.out.println(i);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
-    }
 }

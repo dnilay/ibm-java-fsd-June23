@@ -12,5 +12,7 @@ public interface InventoryService {
 	public List<Inventory> getAllInventory();
 	
 	public Inventory getInventoryByid(int inventoryId);
+	
+	public List<Inventory> getInventoryByProductName(String productName);
 
 }
