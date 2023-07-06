@@ -88,7 +88,24 @@ public class InventoryServiceImpl implements InventoryService {
 	@Override
 	public void deleteInventory(int iventoryId) {
 		// TODO Auto-generated method stub
-		
+		session = sessionFactory.openSession();
+		session.getTransaction().begin();
+		Inventory i=session.get(Inventory.class, iventoryId);
+		session.getTransaction().commit();
+		if(i==null)
+		{
+			System.out.println("no such id found to update..");
+			
+		}
+		else
+		{
+			
+			session.getTransaction().begin();
+			session.remove(i);
+			session.getTransaction().commit();
+			System.out.println("done...");
+		}
+		}
 	}
 
-}
+

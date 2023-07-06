@@ -45,17 +45,15 @@ public class App {
 			 * println("no product found in inventory try again after some time..."); }
 			 */
 			
-			Inventory i=service.updateInventoryById(301, new Inventory(103,"Hp Desktop",190));
-			System.out.println(i);
+			/*
+			 * Inventory i=service.updateInventoryById(301, new
+			 * Inventory(103,"Hp Desktop",190)); System.out.println(i);
+			 * 
+			 * if(i==null) { System.out.println("unable to update..."); } else {
+			 * System.out.println("updation sucessfull.. "+i); }
+			 */
 			
-			if(i==null)
-			{
-				System.out.println("unable to update...");
-			}
-			else
-			{
-				System.out.println("updation sucessfull.. "+i);
-			}
+			service.deleteInventory(301);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
