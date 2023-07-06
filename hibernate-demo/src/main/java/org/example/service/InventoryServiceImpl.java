@@ -56,4 +56,39 @@ public class InventoryServiceImpl implements InventoryService {
 		return query.getResultList();
 	}
 
+	@Override
+	public Inventory updateInventoryById(int inventoryId,Inventory inventory) {
+		// TODO Auto-generated method stub
+		session = sessionFactory.openSession();
+		session.getTransaction().begin();
+		Inventory i=session.get(Inventory.class, inventoryId);
+		session.getTransaction().commit();
+		if(i==null)
+		{
+			System.out.println("no such id found to update..");
+			return null;
+		}
+		else
+		{
+		
+		
+			i.setAvailable(inventory.getAvailable());
+			i.setProductId(inventory.getProductId());
+			i.setProductName(inventory.getProductName());
+			session.getTransaction().begin();
+			session.merge(i);
+			session.getTransaction().commit();
+			return i;
+			
+		}
+		
+	
+	}
+
+	@Override
+	public void deleteInventory(int iventoryId) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

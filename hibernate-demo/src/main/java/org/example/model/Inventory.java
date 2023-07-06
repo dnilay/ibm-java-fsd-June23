@@ -28,5 +28,11 @@ public class Inventory {
 	private String productName;
 	@Column(name = "aavailable")
 	private int available;
+	public Inventory(int productId, String productName, int available) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.available = available;
+	}
 
 }

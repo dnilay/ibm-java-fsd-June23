@@ -33,20 +33,28 @@ public class App {
 			/*
 			 * Inventory i=service.getInventoryByid(100); if(i==null) {
 			 * System.out.println("no such id found..."); } else { System.out.println(i); }
+			 * 
+			 * String productName="Pen"; List<Inventory> list =
+			 * service.getInventoryByProductName(productName); if (!list.isEmpty()) {
+			 * 
+			 * org.hibernate.SessionFactory
+			 * sessionFactory=MyHibernateFactory.getSessionFactory(); Session
+			 * session=sessionFactory.openSession(); session.getTransaction().begin();
+			 * session.save(new Product(100, productName, 10));
+			 * session.getTransaction().commit(); } else { System.out.
+			 * println("no product found in inventory try again after some time..."); }
 			 */
-			String productName="FootBall";
-			List<Inventory> list = service.getInventoryByProductName(productName);
-			if (!list.isEmpty()) {
-
-				org.hibernate.SessionFactory sessionFactory=MyHibernateFactory.getSessionFactory();
-				Session session=sessionFactory.openSession();
-				session.getTransaction().begin();
-				session.save(new Product(100, productName, 10));
-				session.getTransaction().commit();
+			
+			Inventory i=service.updateInventoryById(301, new Inventory(103,"Hp Desktop",190));
+			System.out.println(i);
+			
+			if(i==null)
+			{
+				System.out.println("unable to update...");
 			}
 			else
 			{
-				System.out.println("no product found in inventory try again after some time...");
+				System.out.println("updation sucessfull.. "+i);
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
