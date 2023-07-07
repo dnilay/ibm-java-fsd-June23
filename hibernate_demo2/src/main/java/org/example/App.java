@@ -18,10 +18,10 @@ public class App {
 					.addAnnotatedClass(RoadVehicle.class).addAnnotatedClass(Car.class)
 					.addAnnotatedClass(MotorCycle.class).buildSessionFactory();
 			Session session = sessionFactory.openSession();
-			/*
-			 * session.getTransaction().begin(); session.save(new RoadVehicle());
-			 * session.getTransaction().commit();
-			 */
+			
+			  session.getTransaction().begin(); session.save(new RoadVehicle());
+			  session.getTransaction().commit();
+			 
 			session.getTransaction().begin();
 			  session.save(new Car());
 			  session.save(new MotorCycle());
