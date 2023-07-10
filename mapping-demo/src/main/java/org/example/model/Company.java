@@ -24,14 +24,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Company {
 	@Id
-	@Column(name = "company_id")
 	private String companyId;
 	@Column(name = "company_name")
 	private String companyName;
 	@Embedded
 	private Address companyAddress;
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "company")
+//	@JoinColumn(name = "company_id")
 	private Collection<Employee> employees;
 
 }
