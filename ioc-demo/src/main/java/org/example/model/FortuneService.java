@@ -1,9 +1,7 @@
 package org.example.model;
 
-public interface Coach {
-	
-	public String getDailyWorkOut();
+public interface FortuneService {
+
 	
 	public String getDailyFortune();
-
 }
