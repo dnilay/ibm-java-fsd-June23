@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class Department {
 	
 	private int departmentId;
-	@Value("${department.name}")
+
 	private String departmentName;
 	@Autowired
 	private Location location;
