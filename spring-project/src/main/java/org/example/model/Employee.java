@@ -1,6 +1,7 @@
 package org.example.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -8,7 +9,9 @@ public class Employee {
 
 	private int employeeId;
 
+	@Value("${employee.name}")
 	private String emloyeeName;
+	@Value("${employee.salary}")
 	private double salary;
 
 	private Department department;
