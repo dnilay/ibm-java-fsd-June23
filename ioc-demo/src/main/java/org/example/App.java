@@ -18,7 +18,6 @@ public class App
         System.out.println(myCoach.getDailyWorkOut());
         System.out.println(myCoach.getDailyFortune());
         
-        Person person=context.getBean("p",Person.class);
-        System.out.println(person);
+       
     }
 }

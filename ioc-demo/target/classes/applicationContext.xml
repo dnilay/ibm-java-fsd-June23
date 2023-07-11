@@ -4,18 +4,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <bean name="theCoach" class="org.example.model.BasketBallCoach">
-<constructor-arg name="fortuneService" ref="myFortuneService"></constructor-arg>
+<property name="fortuneService" ref="myFortuneService"/>
 </bean>
 <bean name="myFortuneService" class="org.example.model.SadFortuneService"></bean>
 
-<bean name="p" class="org.example.model.Person">
-<constructor-arg name="firstName" value="John"/>
-<constructor-arg name="lastName" value="Doe"/>
-<constructor-arg name="address" ref="a"/>
-</bean>
 
-<bean name="a" class="org.example.model.Address">
-<constructor-arg name="line1" value="Kolkata"/>
-<constructor-arg name="line2" value="India"/>
-</bean>
 </beans>
