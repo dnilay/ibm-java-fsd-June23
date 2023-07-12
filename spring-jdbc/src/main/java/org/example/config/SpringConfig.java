@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
-@ComponentScan(basePackages = "org.example.model")
+@ComponentScan(basePackages = {"org.example.dao","org.example.factory"})
 public class SpringConfig {
 
 	@Bean

@@ -1,16 +1,12 @@
 package org.example;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-
-import javax.sql.DataSource;
+import java.util.List;
 
 import org.example.config.SpringConfig;
+import org.example.dao.CarDao;
 import org.example.model.Car;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 /**
  * Hello world!
@@ -21,16 +17,17 @@ public class App {
 		try {
 
 			ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
-			DataSource dataSource = context.getBean("dataSource", ComboPooledDataSource.class);
-			Car c = context.getBean("car", Car.class);
-			c.setCarId(101);
-			c.setCarName("Maruti-baleno");
-			Connection connection = dataSource.getConnection();
-			PreparedStatement pst = connection.prepareStatement("insert into car values(?,?)");
-			pst.setInt(1, c.getCarId());
-			pst.setString(2, c.getCarName());
-			pst.executeUpdate();
-			System.out.println("done");
+			CarDao carDao = context.getBean("carDao", CarDao.class);
+			/*
+			 * Car c = carDao.createCar(new Car(105, "mahindra scorpio"));
+			 * System.out.println(c);
+			 */
+			
+			List<Car> cars=carDao.getAllCars();
+			for(Car c:cars)
+			{
+				System.out.println(c);
+			}
 
 		} catch (Exception e) {
 			// TODO: handle exception
