@@ -22,6 +22,12 @@
   	<description></description>
   	<servlet-class>org.example.view.ErrorServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ListEmployeeServlet</servlet-name>
+  	<display-name>ListEmployeeServlet</display-name>
+  	<description></description>
+  	<servlet-class>org.example.view.ListEmployeeServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>MyController</servlet-name>
   	<url-pattern>/controller.do</url-pattern>
@@ -33,6 +39,10 @@
   <servlet-mapping>
   	<servlet-name>ErrorServlet</servlet-name>
   	<url-pattern>/error.view</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ListEmployeeServlet</servlet-name>
+  	<url-pattern>/list_employees.view</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
   <welcome-file>welcome.html</welcome-file>

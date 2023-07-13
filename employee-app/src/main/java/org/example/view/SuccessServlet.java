@@ -32,7 +32,7 @@ public class SuccessServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		
 		Employee employee=(Employee)request.getAttribute("EMP");
-		out.println("hello "+employee.getName()+" your age is: "+employee.getAge());
+		out.println("<p class='h6'>"+employee.getName()+" your age is: "+employee.getAge()+"</p>");
 
 	}
 }
