@@ -6,46 +6,37 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.TypedQuery;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.example.entity.LeagueEntity;
+import org.example.factory.MyHibernateSessionFactory;
 import org.example.model.League;
+import org.hibernate.Session;
 
 /**
  * Servlet implementation class MyServlet
  */
 public class MyServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
-	private List<League> leagueList = null;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public MyServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		List<LeagueEntity> leagueList=null;
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		// Create the set of leagues
-		leagueList = new LinkedList<League>();
-		leagueList.add(new League(2003, "Spring", "Soccer League (Spring '03)"));
-		leagueList.add(new League(2003, "Summer", "Summer Soccer Fest 2003"));
-		leagueList.add(new League(2003, "Fall", "Fall Soccer League (2003)"));
-		leagueList.add(new League(2004, "Spring", "Soccer League (Spring '04)"));
-		leagueList.add(new League(2004, "Summer", "The Summer of Soccer Love 2004"));
-		leagueList.add(new League(2004, "Fall", "Fall Soccer League (2004)"));
+		try {
+			Session session=MyHibernateSessionFactory.getHibernateSession();
+			TypedQuery<LeagueEntity> query=session.createQuery(" FROM LeagueEntity L",LeagueEntity.class);
+			leagueList=query.getResultList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		out.println("<html>");
 		out.println("<head>");
 		String pageTitle = "Duke’s Soccer League: List Leagues";
@@ -68,13 +59,13 @@ public class MyServlet extends HttpServlet {
 		out.println("</p>");
 
 		out.println("<ul>");
-		Iterator<League> items = leagueList.iterator();
+		Iterator<LeagueEntity> items = leagueList.iterator();
 		while (items.hasNext()) {
-			League league = items.next();
+			LeagueEntity league = items.next();
 			out.println(" <li>" + league.getTitle() + "</li>");
 		}
-		out.println("</ul>");
-
+		out.println("</ul><br/><br/>");
+		out.println("<a href='index.html'>Home</a>");
 		out.println("</body>");
 		out.println("</html>");
 	}
