@@ -10,9 +10,23 @@
   	<description></description>
   	<servlet-class>org.example.servlet.MyServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AddLeagueViewServlet</servlet-name>
+  	<display-name>AddLeagueViewServlet</display-name>
+  	<description></description>
+  	<servlet-class>org.example.view.AddLeagueViewServlet</servlet-class>
+  	<init-param>
+  		<param-name>seasons</param-name>
+  		<param-value>Summer,Winter,Autumn,Rainy</param-value>
+  	</init-param>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>MyServlet</servlet-name>
   	<url-pattern>/list_leagues.view</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddLeagueViewServlet</servlet-name>
+  	<url-pattern>/add_league.view</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
   	<welcome-file>index.html</welcome-file>

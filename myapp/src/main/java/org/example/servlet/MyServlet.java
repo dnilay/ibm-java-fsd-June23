@@ -48,7 +48,7 @@ public class MyServlet extends HttpServlet {
 		leagueList.add(new League(2004, "Fall", "Fall Soccer League (2004)"));
 		out.println("<html>");
 		out.println("<head>");
-		String pageTitle = "available leagues";
+		String pageTitle = "Duke’s Soccer League: List Leagues";
 		out.println("<title>" + pageTitle + "</title>");
 		out.println("</head>");
 		out.println("<body bgcolor='white'>");
