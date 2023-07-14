@@ -2,6 +2,7 @@ package org.example.view;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,14 +29,24 @@ public class AddLeagueViewServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
-		String str=getServletConfig().getInitParameter("seasons");
+		List<String> list=(List<String>) request.getAttribute("ERROR");
+		if(list!=null)
+		{
+			out.println("<u>Please correct the bellow error(s)</u><br/>");
+			for(String s:list)
+			{
+				out.println("<font color='red'><li>"+s+"</li></font>");
+			}
+		}
+		
+		String str=getServletConfig().getInitParameter("seasons");//Summer,Winter,Autumn,Rain
 		String[] seasons=str.split(",");
 		out.println("<html><head><title>Add Leage</title></head><body>");
 		out.println("<p><h2>Add A New League</h2></p><hr/>");
-		
+		out.println("<form action='add_league.do' method='post'>");
 		out.println("<center><table><tr><td>Year</td><td><input type='text' name='year'></td></tr>");
 		
-		out.println("<tr><td>Season</td><td><select name='season'><option value='Unknown'>Select</option>");
+		out.println("<tr><td>Season</td><td><select name='season'><option value='Unknown'>Select...</option>");
 		
 		for(String s:seasons)
 		{
@@ -43,7 +54,7 @@ public class AddLeagueViewServlet extends HttpServlet {
 		}
 		out.println("</select></td></tr>");
 		out.println("<tr><td>Title</td><td><input type='text' name='title'></td></tr>");
-		out.println("<tr><td><input type='submit' value='Add New League'></table></body></html>");
+		out.println("<tr><td><input type='submit' value='Add New League'></table></form></body></html>");
 
 	}
 }
