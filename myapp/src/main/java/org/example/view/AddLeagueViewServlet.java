@@ -29,6 +29,7 @@ public class AddLeagueViewServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
+		@SuppressWarnings("unchecked")
 		List<String> list=(List<String>) request.getAttribute("ERROR");
 		if(list!=null)
 		{
