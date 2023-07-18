@@ -10,4 +10,9 @@ public class HelloController {
 	public String goHome() {
 		return "home";
 	}
+
+	@RequestMapping("/showForm")
+	public String showForm() {
+		return "showForm";
+	}
 }
