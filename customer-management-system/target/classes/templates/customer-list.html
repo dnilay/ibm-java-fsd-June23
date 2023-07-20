@@ -12,6 +12,7 @@
 <!-- Build HTML table based on employees -->
 <thead>
 <tr>
+<th scope="col">Customer ID</th>
 <th scope="col">First Name</th>
 <th scope="col">Last Name</th>
 <th scope="col">Email</th>
@@ -19,6 +20,7 @@
 </thead>
 <tbody>
 <tr  th:each="tempCustomer : ${customers}">
+<td th:text="${tempCustomer.customerId}" />
 <td th:text="${tempCustomer.firstName}" />
 <td th:text="${tempCustomer.lastName}" />
 <td th:text="${tempCustomer.email}" />
