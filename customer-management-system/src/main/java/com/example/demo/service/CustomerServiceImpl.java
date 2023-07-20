@@ -26,6 +26,14 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerDao.getAllCustomers();
 	}
 
+
+
+	@Override
+	public void saveCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		customerDao.saveCustomer(customer);
+	}
+
 	
 	
 }

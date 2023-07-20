@@ -31,4 +31,11 @@ public class CustomerDaoImpl implements CustomerDao {
 		return query.getResultList();
 	}
 
+	@Override
+	@Transactional
+	public void saveCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		 entityManager.persist(customer);
+	}
+
 }

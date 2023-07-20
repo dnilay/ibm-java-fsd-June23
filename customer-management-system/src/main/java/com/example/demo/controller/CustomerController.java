@@ -1,19 +1,20 @@
 package com.example.demo.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.model.Customer;
 import com.example.demo.service.CustomerService;
 
 @Controller
-@RequestMapping("/customer")
+@RequestMapping("/customers")
 public class CustomerController {
 
 	private CustomerService customerService;
@@ -23,18 +24,31 @@ public class CustomerController {
 		this.customerService = customerService;
 	}
 
-	@GetMapping
-	public String showDate(Model theModel) {
-		theModel.addAttribute("theDate", new Date());
-		return "hello-world";
-	}
-
 	@GetMapping("/list")
 	public String listCustomers(Model theModel) {
 
-		List<Customer> theCustomers =null;
-		theCustomers=customerService.getAllCustomers();
+		List<Customer> theCustomers = null;
+		theCustomers = customerService.getAllCustomers();
 		theModel.addAttribute("customers", theCustomers);
 		return "customer-list";
 	}
+
+	@GetMapping("/showFormForAdd")
+	public String showFormForAdd(Model theModel) {
+		
+		Customer customer=new Customer();
+		
+		theModel.addAttribute("customer",customer);
+		return "customer-form";
+
+	}
+	
+	@PostMapping("/save")
+	public String saveCustomer(@ModelAttribute("customer") Customer theCustomer)
+	{
+		theCustomer.setCustomerId(new Random().nextInt(10000));
+		customerService.saveCustomer(theCustomer);
+		return "redirect:/customers/list";
+	}
+
 }
