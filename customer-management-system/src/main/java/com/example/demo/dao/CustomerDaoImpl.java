@@ -45,4 +45,11 @@ public class CustomerDaoImpl implements CustomerDao {
 		return entityManager.find(Customer.class, customerId);
 	}
 
+	@Override
+	@Transactional
+	public Customer updateCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		return entityManager.merge(customer);
+	}
+
 }

@@ -15,7 +15,11 @@
 		<hr />
 		<form action="#" th:action="@{/customers/save}"
 			th:object="${customer}" method="POST">
+			<input type="hidden" th:field="*{customerId}" />
 			<table class="table">
+			<!-- Add hidden form field to handle update -->
+
+			
 				<tr>
 					<td>First Name</td>
 					<td><input type="text" th:field="*{firstName}"
@@ -31,7 +35,7 @@
 					<td><input type="text" th:field="*{email}" placeholder="Email"></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="add new customer"></td>
+					<td><input type="submit" value="add new customer/update"></td>
 				</tr>
 			</table>
 

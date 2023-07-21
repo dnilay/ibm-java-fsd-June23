@@ -56,7 +56,13 @@ public class CustomerController {
 	{
 		Customer customer=customerService.findCustomerById(customerId);
 		theModel.addAttribute("customer",customer);
-		return "customer-form";
+		return "customer-form-update";
 	}
-
+	@PostMapping("/update")
+	public String updateCustomer(@ModelAttribute("customer") Customer theCustomer)
+	{
+	
+		customerService.updateCustomer(theCustomer);
+		return "redirect:/customers/list";
+	}
 }
