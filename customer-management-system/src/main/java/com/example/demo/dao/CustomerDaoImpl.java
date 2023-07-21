@@ -38,4 +38,11 @@ public class CustomerDaoImpl implements CustomerDao {
 		 entityManager.persist(customer);
 	}
 
+	@Override
+	@Transactional
+	public Customer findCustomerById(int customerId) {
+		// TODO Auto-generated method stub
+		return entityManager.find(Customer.class, customerId);
+	}
+
 }
