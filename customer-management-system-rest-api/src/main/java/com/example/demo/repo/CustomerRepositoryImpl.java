@@ -60,8 +60,17 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	}
 
 	@Override
-	public void deleteCustomerById(String customerId) {
+	public String deleteCustomerById(String customerId) {
 		// TODO Auto-generated method stub
+		Customer tempCustomer = customers.get(customerId);
+		if (tempCustomer != null) {
+			customers.remove(customerId);
+			return "removed.";
+		}
+		else
+		{
+			return "customer not found.. "+customerId;
+		}
 
 	}
 

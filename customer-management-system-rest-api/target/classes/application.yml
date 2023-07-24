@@ -1,5 +1,12 @@
 server:
-  port: 6666
+  port: 8888
 spring:
-  application:
-    name: customer-rest-app
+  datasource:
+    url: jdbc:h2:mem:testDB
+    username: sa
+    password: sa
+  h2:
+    console:
+      enabled: true
+      path: /h2
+    

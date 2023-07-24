@@ -40,8 +40,9 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public void deleteCustomerById(String customerId) {
+	public String deleteCustomerById(String customerId) {
 		// TODO Auto-generated method stub
+		return customerRepository.deleteCustomerById(customerId);
 
 	}
 

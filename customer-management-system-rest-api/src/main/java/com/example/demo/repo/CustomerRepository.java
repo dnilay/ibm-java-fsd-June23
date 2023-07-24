@@ -14,6 +14,6 @@ public interface CustomerRepository {
 
 	Customer updateCustomerById(String customerId, Customer customer);
 
-	void deleteCustomerById(String customerId);
+	String deleteCustomerById(String customerId);
 
 }
