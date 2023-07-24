@@ -10,4 +10,10 @@ public interface CustomerRepository {
 
 	Collection<Customer> getAllCustomers();
 
+	Customer getCustomerById(String customerId);
+
+	Customer updateCustomerById(String customerId, Customer customer);
+
+	void deleteCustomerById(String customerId);
+
 }
