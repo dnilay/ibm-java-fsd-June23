@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,5 +49,22 @@ public class EmployeeController {
 			return ResponseEntity.status(HttpStatus.FOUND).body(optional.get());
 		}
 	}
+	
+	@PutMapping
+	public ResponseEntity<?> updateEmployee(@RequestBody Employee employee)
+	{
+		Employee e=employeeService.updateEmployeeById(employee);
+		if(e==null)
+		{
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("employee with employeeId "+employee.getEmployeeId()+"not found ");
+		}
+		else
+		{
+			return ResponseEntity.status(HttpStatus.OK).body(e);
+		}
+	}
+	
+	
+	
 
 }

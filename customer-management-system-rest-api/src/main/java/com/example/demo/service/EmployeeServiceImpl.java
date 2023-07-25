@@ -34,11 +34,39 @@ public class EmployeeServiceImpl implements EmployeeService {
 		// TODO Auto-generated method stub
 
 		Optional<Employee> emOptional = employeeRepository.findById(employeeId);
-		if (emOptional==null) {
+		if (emOptional == null) {
 			return null;
 		} else {
 			return emOptional;
 		}
+	}
+
+	@Override
+	public Employee updateEmployeeById(Employee employee) {
+		// TODO Auto-generated method stub
+
+		Optional<Employee> oEmployee = employeeRepository.findById(employee.getEmployeeId());
+
+		if (oEmployee.isEmpty()) {
+			return null;
+		}
+		else
+		{
+			oEmployee.get().setFirstName(employee.getFirstName());
+			oEmployee.get().setLastName(employee.getLastName());
+			oEmployee.get().setSalary(employee.getSalary());
+			
+			employeeRepository.save(oEmployee.get());
+			return oEmployee.get();
+
+		}
+	}
+
+	@Override
+	public void deleteEmployee(int employeeId) {
+		// TODO Auto-generated method stub
+		
+		
 	}
 
 }
