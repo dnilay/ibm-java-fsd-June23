@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.exception.EmployeeNotFoundException;
 import com.example.demo.model.Employee;
 import com.example.demo.repo.EmployeeRepository;
 
@@ -66,6 +67,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void deleteEmployee(int employeeId) {
 		// TODO Auto-generated method stub
 		
+		Optional<Employee> oEmployee = employeeRepository.findById(employeeId);
+
+		if (!oEmployee.isEmpty()) {
+			
+			
+			employeeRepository.deleteById(employeeId);
+		}
+		else
+		{
+			throw new EmployeeNotFoundException("employee with given id not found..");
+		}
 		
 	}
 
