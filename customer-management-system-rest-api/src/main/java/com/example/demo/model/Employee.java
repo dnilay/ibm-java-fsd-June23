@@ -27,5 +27,13 @@ public class Employee {
 	private String lastName;
 	@Column(name = "salary")
 	private double salary;
+	public Employee(String firstName, String lastName, double salary) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.salary = salary;
+	}
+	
+	
 
 }
