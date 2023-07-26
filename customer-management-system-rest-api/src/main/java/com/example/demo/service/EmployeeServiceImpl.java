@@ -81,4 +81,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 	}
 
+	@Override
+	public List<Employee> findByFirstName(String firstName) {
+		// TODO Auto-generated method stub
+		List<Employee> employees=employeeRepository.findByFirstName(firstName);
+		if(employees==null)
+		{
+			return null;
+		}
+		else
+		{
+			return employees;
+		}
+		
+	}
+
 }

@@ -78,5 +78,18 @@ public class EmployeeController {
 		return ResponseEntity.status(HttpStatus.OK).body("employee deleted..");
 
 	}
+	@GetMapping("/find/{firstName}")
+	public ResponseEntity<?> findByFirstName(@PathVariable("firstName") String firstName)
+	{
+		List<Employee> employees=employeeService.findByFirstName(firstName);
+		if(employees==null)
+		{
+			throw new EmployeeNotFoundException("employee with "+firstName+" not found");
+		}
+		else
+		{
+			return ResponseEntity.status(HttpStatus.OK).body(employees);
+		}
+	}
 
 }
