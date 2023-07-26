@@ -10,7 +10,8 @@ import com.example.demo.model.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	@Query
 	List<Employee> findByFirstName(String firstName);
-
+	List<Employee> findByFirstNameOrLastName(String firstName,String lastName);
+	List<Employee> findByFirstNameAndLastName(String firstName,String lastName);
 	
 
 }
