@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,14 @@ public class UserController {
 	private final ModelMapper modelMapper;
 
 	private final UserService userService;
+
+	private Environment environment;
+
+	@GetMapping("/status")
+	public ResponseEntity<?> getStatus()
+	{
+		return ResponseEntity.ok("service is runing on port: "+environment.getProperty("local.server.port"));
+	}
 
 	@PostMapping
 	public ResponseEntity<UserResponseModel> createUser(@RequestBody UserRequestModel userRequestModel) {
