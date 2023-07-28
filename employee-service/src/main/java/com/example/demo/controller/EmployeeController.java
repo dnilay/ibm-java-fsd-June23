@@ -4,6 +4,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,12 +34,12 @@ public class EmployeeController {
 	}
 
 	@PostMapping("/{departmentName}")
-	public ResponseEntity<?> createEmployee(@RequestBody EmployeeEntity employee, String departmentName) {
+	public ResponseEntity<?> createEmployee(@RequestBody EmployeeEntity employee,@PathVariable("departmentName") String departmentName) {
 
-		Object o = restTemplate.getForObject("http://localhost:9999/department-service/departments/" + departmentName,
+		ResponseEntity<DepartmentDto> o = restTemplate.getForEntity("http://localhost:9999/department-service/departments/" + departmentName,
 				DepartmentDto.class);
 
-		DepartmentDto dto = (DepartmentDto) o;
+		DepartmentDto dto = o.getBody();
 		employee.setDepartmentId(dto.getDepartmentId());
 		employee.setDepartmentName(dto.getDepartmentName());
 		return ResponseEntity.status(HttpStatus.CREATED).body(employeeService.createEmployee(employee));
