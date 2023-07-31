@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,11 @@ import lombok.AllArgsConstructor;
 public class StreamController {
 
 	private final StreamService streamService;
-	
+	@GetMapping("/status")
+	public ResponseEntity<?> getStatus()
+	{
+		return ResponseEntity.status(HttpStatus.OK).body("status ok");
+	}
 	@PostMapping
 	public ResponseEntity<Stream> createStream(@RequestBody Stream stream)
 	{
