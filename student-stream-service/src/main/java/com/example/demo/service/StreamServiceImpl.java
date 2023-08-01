@@ -31,7 +31,7 @@ public class StreamServiceImpl implements StreamService {
 	@Override
 	public List<Stream> getAllStream() {
 		// TODO Auto-generated method stub
-		return null;
+		return streamRepository.findAll();
 	}
 
 }

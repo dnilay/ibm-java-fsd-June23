@@ -6,9 +6,5 @@ spring:
       host: localhost
       port: 27017
       database: playground
-  security:
-    user:
-      name: scott
-      password: 12345
 server:
   port: 8088
