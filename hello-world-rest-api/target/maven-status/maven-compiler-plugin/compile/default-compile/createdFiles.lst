@@ -1,0 +1,4 @@
+com\example\demo\HelloWorldBean.class
+com\example\demo\HelloWorldRestApiApplication.class
+com\example\demo\environment\InstanceInformationService.class
+com\example\demo\HelloWorldController.class
